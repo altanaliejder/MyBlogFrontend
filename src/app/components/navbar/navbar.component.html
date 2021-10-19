@@ -1,0 +1,26 @@
+<mat-toolbar class="mat-elevation-z1">
+    <mat-toolbar-row id="custom-toolbar" class="container">
+        <div class="layout" layout-align="start center">My Blog</div>
+        <div>
+            <form class="example-container" [formGroup]="options">
+                <mat-form-field class="example-form">
+                    <input matInput type="text" placeholder="Search" id="searchKeyword" [(ngModel)]="searchText"
+                        formControlName="searchControl">
+                </mat-form-field>
+                <button (click)="search()" routerLink="/story/search/{{searchText}}" mat-icon-button color="secondary"
+                    aria-label="Example icon-button with a heart icon">
+                    <mat-icon class="toolbar-icon">search</mat-icon>
+                </button>
+                <button mat-icon-button color="secondary" aria-label="Example icon-button with a heart icon">
+                    <mat-icon class="toolbar-icon">home</mat-icon>
+                </button>
+
+                <button mat-icon-button color="secondary" aria-label="Example icon-button with a heart icon">
+                    <mat-icon class="toolbar-icon">account_circle</mat-icon>
+                </button>
+            </form>
+        </div>
+    </mat-toolbar-row>
+    <!-- [@openClose]="isOpen ?  'open' : 'closed'" -->
+
+</mat-toolbar>

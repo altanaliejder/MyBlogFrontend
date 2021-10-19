@@ -1,0 +1,16 @@
+<h1 style="text-align: center;padding: 5px"><b>Stories for searching "{{searchText}}" </b></h1>
+<div>
+    <mat-card class="example-card" style="margin: 5%;" *ngFor="let story of stories">
+
+        <mat-card-title-group>
+            <mat-card-title>{{story.title}}</mat-card-title>
+            <mat-card-subtitle> {{story.subject.name}} </mat-card-subtitle>
+
+        </mat-card-title-group>
+        <mat-card-content
+            style="overflow: hidden; display: -webkit-box; text-overflow:ellipsis; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+            {{story.story}}
+        </mat-card-content>
+
+    </mat-card>
+</div>
