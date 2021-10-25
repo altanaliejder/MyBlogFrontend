@@ -24,4 +24,11 @@ export class StoryService {
     console.log(keyword)
     return this.httpClient.get<Story[]>(this.apiUrl + "stories/search?keyword=" + keyword);
   }
+
+  getStoriesToSubject(subjectId: number): Observable<ListResponseModel<Story>> {
+    return this.httpClient.get<ListResponseModel<Story>>(this.apiUrl + "stories/getSubjectToStory?subjectId=" + subjectId)
+  }
+  getStoriesByUserId(userId: number): Observable<ListResponseModel<Story>> {
+    return this.httpClient.get<ListResponseModel<Story>>(this.apiUrl + "stories/getstoriesbyuserid?userId=" + userId)
+  }
 }

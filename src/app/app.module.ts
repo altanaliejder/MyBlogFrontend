@@ -16,9 +16,11 @@ import { SubjectComponent } from './components/subject/subject.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatChipsModule } from '@angular/material/chips';
-import { AnimationComponent } from './components/animations/animation/animation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchStoryComponent } from './components/search-story/search-story.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 
 @NgModule({
@@ -27,8 +29,9 @@ import { SearchStoryComponent } from './components/search-story/search-story.com
     NavbarComponent,
     StoryComponent,
     SubjectComponent,
-    AnimationComponent,
-    SearchStoryComponent
+    SearchStoryComponent,
+    LoginComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ import { SearchStoryComponent } from './components/search-story/search-story.com
     MatChipsModule,
     NgbModule, FormsModule, ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,23 +1,34 @@
 <mat-toolbar class="mat-elevation-z1">
     <mat-toolbar-row id="custom-toolbar" class="container">
-        <div class="layout" layout-align="start center">My Blog</div>
+        <div class="layout"> <a routerLink="/">My Blog </a> </div>
         <div>
             <form class="example-container" [formGroup]="options">
                 <mat-form-field class="example-form">
                     <input matInput type="text" placeholder="Search" id="searchKeyword" [(ngModel)]="searchText"
                         formControlName="searchControl">
                 </mat-form-field>
-                <button (click)="search()" routerLink="/story/search/{{searchText}}" mat-icon-button color="secondary"
-                    aria-label="Example icon-button with a heart icon">
+                <button (click)="search()" (click)="toggle()" routerLink="/story/search/{{searchText}}" mat-icon-button
+                    color="primary" aria-label="Example icon-button with a heart icon">
                     <mat-icon class="toolbar-icon">search</mat-icon>
                 </button>
-                <button mat-icon-button color="secondary" aria-label="Example icon-button with a heart icon">
-                    <mat-icon class="toolbar-icon">home</mat-icon>
-                </button>
+                <span *ngIf="isAuth; else notAuth ">
+                    <button mat-icon-button color="primary" aria-label="Example icon-button with a heart icon">
+                        <mat-icon class="toolbar-icon">account_circle</mat-icon>
+                    </button>
 
-                <button mat-icon-button color="secondary" aria-label="Example icon-button with a heart icon">
-                    <mat-icon class="toolbar-icon">account_circle</mat-icon>
-                </button>
+                    <button mat-button>
+                        <mat-icon>add</mat-icon> Add Story
+                    </button>
+                    <button mat-button (click)="logout()">
+                        <mat-icon> logout</mat-icon>
+                    </button>
+                </span>
+                <ng-template #notAuth>
+                    <button routerLink="login" mat-icon-button color="primary"
+                        aria-label="Example icon-button with a heart icon">
+                        Login Now!
+                    </button>
+                </ng-template>
             </form>
         </div>
     </mat-toolbar-row>

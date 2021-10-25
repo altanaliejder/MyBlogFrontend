@@ -1,6 +1,7 @@
-import { SearchStoryComponent } from './../search-story/search-story.component';
-import { StoryService } from './../../services/story/story.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user';
+import { AuthService } from './../../services/auth/auth.service';
+import { UserService } from './../../services/user/user.service';
+import { Component, OnInit } from '@angular/core';
 import {
   trigger,
   state,
@@ -9,7 +10,7 @@ import {
   transition,
   // ...
 } from '@angular/animations';
-import { Form, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, } from '@angular/forms';
 
 @Component({
   // animations: [
@@ -23,6 +24,7 @@ import { Form, FormBuilder, FormGroup, FormControl, Validators } from '@angular/
   //       height: 0,
   //       opacity: 0,
   //       width: 0,
+
   //     })),
   //     transition('open => closed', [
   //       animate('1s')
@@ -34,23 +36,25 @@ import { Form, FormBuilder, FormGroup, FormControl, Validators } from '@angular/
   // ],
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  providers: [SearchStoryComponent],
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
   options: FormGroup
   searchText: any;
-  isOpen = true;
+  isAuth: boolean;
+  isOpen = false;
+  user = <User>{}
 
-  constructor(private fb: FormBuilder, private searchComponent: SearchStoryComponent) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.options = this.fb.group({
       searchControl: ["",]
     })
-
+    this.isAuth = this.authService.isAuthenticated()
   }
-
   ngOnInit(): void {
-
+  }
+  toggle() {
+    this.isOpen = true
   }
 
 
@@ -61,6 +65,10 @@ export class NavbarComponent implements OnInit {
     //this.searchComponent.keyword = searching
     //this.searchComponent.searchi(searching)
     //this.searchComponent.ngOnInit()
+  }
+  logout() {
+    localStorage.clear()
+    window.location.reload()
   }
 
 
