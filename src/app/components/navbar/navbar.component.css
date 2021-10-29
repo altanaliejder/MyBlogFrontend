@@ -13,3 +13,7 @@ a{
   text-decoration: none;
   color: black;
 }
+#search-form{
+  width: 30%;
+  font-size: 16px;
+}

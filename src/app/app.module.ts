@@ -21,6 +21,9 @@ import { SearchStoryComponent } from './components/search-story/search-story.com
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { AddStoryComponent } from './components/add-story/add-story.component';
+import { StoryAddDirective } from './directives/story-add.directive';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -32,6 +35,9 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
     SearchStoryComponent,
     LoginComponent,
     SignInComponent,
+    AddStoryComponent,
+    StoryAddDirective,
+
   ],
   imports: [
     BrowserModule,
@@ -46,7 +52,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
     HttpClientModule,
     MatGridListModule,
     MatChipsModule,
-    NgbModule, FormsModule, ReactiveFormsModule
+    NgbModule, FormsModule, ReactiveFormsModule, MatSelectModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

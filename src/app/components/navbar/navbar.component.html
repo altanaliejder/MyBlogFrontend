@@ -3,9 +3,9 @@
         <div class="layout"> <a routerLink="/">My Blog </a> </div>
         <div>
             <form class="example-container" [formGroup]="options">
-                <mat-form-field class="example-form">
-                    <input matInput type="text" placeholder="Search" id="searchKeyword" [(ngModel)]="searchText"
-                        formControlName="searchControl">
+                <mat-form-field class="example-form" id="search-form">
+                    <input class="search-input" matInput placeholder="Search" size="10" appearance="legacy"
+                        id="searchKeyword" [(ngModel)]="searchText" formControlName="searchControl">
                 </mat-form-field>
                 <button (click)="search()" (click)="toggle()" routerLink="/story/search/{{searchText}}" mat-icon-button
                     color="primary" aria-label="Example icon-button with a heart icon">
@@ -16,7 +16,7 @@
                         <mat-icon class="toolbar-icon">account_circle</mat-icon>
                     </button>
 
-                    <button mat-button>
+                    <button mat-button routerLink="story/addstory">
                         <mat-icon>add</mat-icon> Add Story
                     </button>
                     <button mat-button (click)="logout()">

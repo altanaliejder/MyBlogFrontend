@@ -31,4 +31,10 @@ export class StoryService {
   getStoriesByUserId(userId: number): Observable<ListResponseModel<Story>> {
     return this.httpClient.get<ListResponseModel<Story>>(this.apiUrl + "stories/getstoriesbyuserid?userId=" + userId)
   }
+  addStory(story: Story) {
+    return this.httpClient.post(this.apiUrl + "stories/add", story)
+  }
+  // addStoryToUser(storyId: number, userId: number) {
+  //   return this.httpClient.post(this.apiUrl + "")
+  // }
 }

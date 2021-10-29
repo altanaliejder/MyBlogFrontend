@@ -1,3 +1,4 @@
+import { AddStoryComponent } from './components/add-story/add-story.component';
 
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: "story/subject/:subjectId", component: StoryComponent },
   { path: "login", component: LoginComponent },
   { path: "signin", component: SignInComponent },
-  { path: "story/user/:userId", component: StoryComponent }
+  { path: "story/user/:userId", component: StoryComponent },
+  { path: "story/addstory", component: AddStoryComponent }
 ];
 
 @NgModule({

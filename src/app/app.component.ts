@@ -18,14 +18,10 @@ export class AppComponent {
   isAuth: boolean;
   user = <User>{}
 
-  constructor(private route: Router, private authService: AuthService, private userService: UserService) {
+  constructor(private authService: AuthService, private userService: UserService) {
     this.getCurrentUser()
     this.isAuth = this.authService.isAuthenticated();
-    this.route.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.routeName = this.route.url.slice(1);
-      }
-    })
+
   }
 
 

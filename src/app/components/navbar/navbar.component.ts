@@ -11,6 +11,7 @@ import {
   // ...
 } from '@angular/animations';
 import { FormBuilder, FormGroup, } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   // animations: [
@@ -68,8 +69,12 @@ export class NavbarComponent implements OnInit {
   }
   logout() {
     localStorage.clear()
-    window.location.reload()
+    this.refresh()
   }
 
+  refresh() {
+
+    window.location.reload()
+  }
 
 }
